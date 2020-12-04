@@ -1,6 +1,7 @@
-# dag-visualizer
+## dag-visualizer
 
-How to run the DAG visualizer: 
+# How to run the DAG visualizer: 
+
 1. Load DAG information in nodeList.json (in server folder)
 
 2. With two terminals, open both folders, as they're two separated projects:
@@ -17,5 +18,3 @@ How to run the DAG visualizer:
 -   npm run build
 
 5. You'll find the DAG  visualization on localhost:1234
-
-.
