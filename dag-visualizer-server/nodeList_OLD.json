@@ -1,0 +1,23 @@
+[
+    {
+        "id": "nine",
+        "firstParentId": "eight",
+        "secondParentId": "seven"
+    },
+    {
+        "id": "seven",
+        "firstParentId": "six",
+        "secondParentId": "five"
+    },
+    {
+        "id": "five",
+        "firstParentId": "four",
+        "secondParentId": "three"
+    },
+    {
+        "id": "three",
+        "firstParentId": "two",
+        "secondParentId": "one"
+    }
+
+]

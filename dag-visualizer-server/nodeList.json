@@ -1,23 +1,94 @@
 [
-    {
-        "id": "nine",
-        "firstParentId": "eight",
-        "secondParentId": "seven"
-    },
-    {
-        "id": "seven",
-        "firstParentId": "six",
-        "secondParentId": "five"
-    },
-    {
-        "id": "five",
-        "firstParentId": "four",
-        "secondParentId": "three"
-    },
-    {
-        "id": "three",
-        "firstParentId": "two",
-        "secondParentId": "one"
-    }
-
+   {
+      "parents":[
+         "A"
+      ],
+      "id":"B"
+   },
+   {
+      "parents":[
+         "B"
+      ],
+      "id":"C"
+   },
+   {
+      "parents":[
+         "B"
+      ],
+      "id":"D"
+   },
+   {
+      "parents":[
+         "C",
+         "D"
+      ],
+      "id":"E"
+   },
+   {
+      "parents":[
+         "C",
+         "D"
+      ],
+      "id":"F"
+   },
+   {
+      "parents":[
+         "A"
+      ],
+      "id":"G"
+   },
+   {
+      "parents":[
+         "G"
+      ],
+      "id":"H"
+   },
+   {
+      "parents":[
+         "H",
+         "F"
+      ],
+      "id":"I"
+   },
+   {
+      "parents":[
+         "I"
+      ],
+      "id":"J"
+   },
+   {
+      "parents":[
+         "J"
+      ],
+      "id":"K"
+   },
+   {
+      "parents":[
+         "K"
+      ],
+      "id":"L"
+   },
+   {
+      "parents":[
+         "L"
+      ],
+      "id":"M"
+   },
+   {
+      "parents":[
+         "M"
+      ],
+      "id":"N"
+   },
+   {
+      "parents":[
+         "N"
+      ],
+      "id":"O"
+   },
+   {
+      "parents":[
+      ],
+      "id":"Z"
+   }
 ]

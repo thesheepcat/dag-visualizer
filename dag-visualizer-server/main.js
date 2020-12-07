@@ -24,10 +24,25 @@ try{
     //Send data to listeners
     for (var node in nodeList) {
       nodeId = nodeList[node].id
-      firstParentId = nodeList[node].firstParentId
-      secondParentId = nodeList[node].secondParentId
-      //console.log(nodeId, firstParentId, secondParentId)
-      socketOnServer.emit('message', nodeId, firstParentId, secondParentId);}
+      parents = nodeList[node].parents
+      //console.log(parents)    
+      switch (parents.length){
+        case 0:
+          firstParentId = "none"
+          secondParentId = "none"
+          break;
+        case 1:
+          firstParentId = nodeList[node].parents[0]
+          secondParentId = "none"
+          break;
+        case 2:
+          firstParentId = nodeList[node].parents[0]
+          secondParentId = nodeList[node].parents[1]
+          break;
+    } 
+    //console.log(nodeId, firstParentId, secondParentId)
+    //Send data through socketio channel  
+    socketOnServer.emit('message', nodeId, firstParentId, secondParentId);}
   })
 } catch(err){
   console.log(String(err))
