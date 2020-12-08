@@ -29,11 +29,15 @@ try {
 //Function called from Index.html
 onLoad = () => {
 
+    // first we generate DOM label for each graph node. 
+    // Be cautious here, since for large graphs with more than 1k nodes, this will become a bottleneck.
+    var domLabels = generateDOMLabels(graph);    
+    
     var layout = Viva.Graph.Layout.forceDirected(graph, {
-       springLength : 80,
-       springCoeff : 0.00010,
+       springLength : 100,
+       springCoeff : 0.00005,
        dragCoeff : 0.015,
-       gravity : -1.5
+       gravity : -0.50
     });
 
    var events = Viva.Graph.webglInputEvents(graphics, graph);
@@ -45,6 +49,25 @@ onLoad = () => {
     document.getElementById('mouse-hover-node-id').innerText = 'NODE ID (HOVER): ' + node.id
 })
 
+    graphics.placeNode(function(ui, pos) {
+        // This callback is called by the renderer before it updates node coordinate. 
+        // We can use it to update corresponding DOM label position;
+
+        // we create a copy of layout position
+        var domPos = {
+            x: pos.x,
+            y: pos.y
+        };
+        // And ask graphics to transform it to DOM coordinates:
+        graphics.transformGraphToClientCoordinates(domPos);
+
+        // then move corresponding dom label to its own position:
+        var nodeId = ui.node.id;
+        var labelStyle = domLabels[nodeId].style;
+        labelStyle.left = domPos.x + 'px';
+        labelStyle.top = domPos.y + 'px';
+    });
+
     var renderer = Viva.Graph.View.renderer(graph, {
             layout    : layout,
             graphics  : graphics,
@@ -52,5 +75,20 @@ onLoad = () => {
         });
 
     renderer.run();
+
+    function generateDOMLabels(graph) {
+        // this will map node id into DOM element
+        var labels = Object.create(null);
+        graph.forEachNode(function(node) {
+            var label = document.createElement('span');
+            label.classList.add('node-label');
+            label.innerText = node.id;
+            labels[node.id] = label;
+            document.body.appendChild(label);
+        });
+        // NOTE: If your graph changes over time you will need to
+        // monitor graph changes and update DOM elements accordingly
+        return labels;
+      }
 }
 

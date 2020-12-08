@@ -12,3 +12,10 @@ body, svg, #graphContainer {
     left: 10px;
     font-family: Verdana;
 }
+
+.node-label {
+    position: absolute;
+    pointer-events: none;
+    color: black;
+    z-index: 10;
+}
